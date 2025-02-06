@@ -1,0 +1,9 @@
+apiVersion: manage.sap/v1
+kind: Order
+metadata:
+  labels:
+    app.kubernetes.io/name: ordermanager
+    app.kubernetes.io/managed-by: kustomize
+  name: order-sample
+spec:
+  # TODO(user): Add fields here

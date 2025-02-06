@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- manage_v1_order.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

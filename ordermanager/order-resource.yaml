@@ -1,0 +1,11 @@
+apiVersion: manage.sap/v1
+kind: Order
+metadata:
+  name: order-2
+  labels:
+    process_orders: "true"
+spec:
+  order_id: "o2"
+  inventory: "basket"
+  quantity: 1
+  seller: "f"

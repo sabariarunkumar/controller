@@ -1,0 +1,74 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.17.1
+  name: orders.manage.sap
+spec:
+  group: manage.sap
+  names:
+    kind: Order
+    listKind: OrderList
+    plural: orders
+    singular: order
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Order is the Schema for the orders API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: OrderSpec defines the desired state of Order.
+            properties:
+              inventory:
+                description: Inventory...
+                maxLength: 10
+                type: string
+              order_id:
+                description: ID...
+                type: string
+              quantity:
+                default: 1
+                description: 'Quantity defines the number of replicas (Default: 1,
+                  Min: 1, Max: 10)'
+                maximum: 10
+                minimum: 1
+                type: integer
+              seller:
+                type: string
+            required:
+            - inventory
+            - order_id
+            - quantity
+            type: object
+          status:
+            description: OrderStatus defines the observed state of Order.
+            properties:
+              state:
+                description: State
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
